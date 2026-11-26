@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { fetchSessionById, fetchSessions } from "@/services/sessions";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 export async function generateStaticParams() {
   const sessions = await fetchSessions();
@@ -19,9 +20,10 @@ export async function generateStaticParams() {
 export default async function SessionDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: string; id: string }>;
 }) {
-  const { id } = await params;
+  const { locale, id } = await params;
+  const t = await getTranslations({ locale, namespace: "Sessions" });
   const session = await fetchSessionById(id);
 
   if (!session) {
@@ -44,6 +46,7 @@ export default async function SessionDetailPage({
       <Flex direction="column" gap="3">
         <Flex align="center" gap="3">
           <Badge>{session.track}</Badge>
+          <Badge variant="secondary">{t(`level.${session.level}`)}</Badge>
           <Text fontSize="sm" color="var(--text-muted)">
             {session.startTime} · {session.durationMinutes} min · {session.room}
           </Text>

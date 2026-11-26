@@ -13,6 +13,13 @@
     "line1": "Your schedule, your sessions —",
     "line2": "one place"
   },
+  "Sessions": {
+    "level": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
   "Speakers": {
     "title": "Speakers",
     "description": "Who is speaking at React Alicante, and when.",
