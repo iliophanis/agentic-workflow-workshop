@@ -42,6 +42,14 @@ describe("SpeakerCard", () => {
     expect(screen.getByText("An Afternoon Talk")).toBeInTheDocument();
   });
 
+  it("uses the speaker's name as a level 2 heading", () => {
+    render(<SpeakerCard speaker={speaker} />);
+
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Ana Lopez" }),
+    ).toBeInTheDocument();
+  });
+
   it("links each session to its session page", () => {
     render(<SpeakerCard speaker={speaker} />);
 
