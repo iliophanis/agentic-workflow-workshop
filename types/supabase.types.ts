@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.5"
+    PostgrestVersion: "14.18"
   }
   graphql_public: {
     Tables: {
@@ -45,6 +45,7 @@ export type Database = {
           description: string
           duration_minutes: number
           id: string
+          level: Database["public"]["Enums"]["session_level"]
           room: string
           speaker: string
           start_time: string
@@ -56,6 +57,7 @@ export type Database = {
           description: string
           duration_minutes: number
           id: string
+          level: Database["public"]["Enums"]["session_level"]
           room: string
           speaker: string
           start_time: string
@@ -67,6 +69,7 @@ export type Database = {
           description?: string
           duration_minutes?: number
           id?: string
+          level?: Database["public"]["Enums"]["session_level"]
           room?: string
           speaker?: string
           start_time?: string
@@ -83,6 +86,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
+      session_level: "beginner" | "intermediate" | "advanced"
       session_track: "React" | "Agentic AI" | "Performance" | "Architecture"
     }
     CompositeTypes: {
@@ -214,6 +218,7 @@ export const Constants = {
   },
   public: {
     Enums: {
+      session_level: ["beginner", "intermediate", "advanced"],
       session_track: ["React", "Agentic AI", "Performance", "Architecture"],
     },
   },

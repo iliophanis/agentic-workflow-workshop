@@ -1,7 +1,9 @@
+import { Badge } from "@/components/atoms/badge";
 import { SurfaceCard } from "@/components/atoms/surface-card";
 import { Link } from "@/i18n/navigation";
 import type { Session } from "@/types/session";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { useTranslations } from "next-intl";
 
 interface SessionBlockProps {
   session: Session;
@@ -10,6 +12,8 @@ interface SessionBlockProps {
 }
 
 export function SessionBlock({ session, top, height }: SessionBlockProps) {
+  const t = useTranslations("Sessions");
+
   return (
     <Link href={`/sessions/${session.id}`}>
       <Box
@@ -19,9 +23,19 @@ export function SessionBlock({ session, top, height }: SessionBlockProps) {
         height={`${height}px`}
       >
         <SurfaceCard>
-          <Text fontWeight="medium" color="var(--text-primary)" truncate>
-            {session.title}
-          </Text>
+          <Flex align="center" gap="2">
+            <Text
+              fontWeight="medium"
+              color="var(--text-primary)"
+              truncate
+              minWidth="0"
+            >
+              {session.title}
+            </Text>
+            <Box flexShrink="0">
+              <Badge variant="secondary">{t(`level.${session.level}`)}</Badge>
+            </Box>
+          </Flex>
           <Text color="var(--text-muted)" truncate>
             {session.startTime} · {session.speaker}
           </Text>
