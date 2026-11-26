@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.4.0] — 2026-11-26
+
+### Features
+
+- Speakers page (#4)
+- Show each session's level: new `session_level` enum and `level` column on sessions, shown in the session block and detail page (#2, #6)
+
+### Maintenance
+
+- Trigger a preview
+- Bump version to 0.4.0
+
+## Test Suite
+
+| Suite          | Status     |
+| -------------- | ---------- |
+| ESLint         | ⏳ pending |
+| Type-check     | ⏳ pending |
+| Unit tests     | ⏳ pending |
+| Build (Vercel) | ⏳ pending |
+
+CI: no run yet
+
 ## [0.3.2] — 2026-11-26
 
 ### Maintenance
